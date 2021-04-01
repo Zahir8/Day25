@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
 class GetRequestSetHeaders extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {totalReactPackages: null};
+    }
 
     componentDidMount() {
         const headers = {"Content-Type": "application/json"}
