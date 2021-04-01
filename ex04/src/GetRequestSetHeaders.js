@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 class GetRequestSetHeaders extends Component {
-
+    
     constructor(props) {
         super(props);
-        this.state = {totalReactPackages: null, errorMessage: null};
+        this.state = {totalReactPackages: null};
     }
 
     componentDidMount() {
