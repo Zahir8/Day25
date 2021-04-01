@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 
 class GetRequestSetHeaders extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {totalReactPackages: null, errorMessage: null};
-    }
-
     componentDidMount() {
         const headers = {"Content-Type": "application/json"}
         fetch('https://api.npms.io/v2/search?q=react', { headers })
