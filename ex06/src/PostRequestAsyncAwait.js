@@ -11,7 +11,7 @@ class PostRequestAsyncAwait extends React.Component {
     async componentDidMount() {
         const article = { title: "React POST Request Example" };
 
-        const response = axios.post('https://reqres.in/api/articles', article)
+        const response = await axios.post('https://reqres.in/api/articles', article);
         this.setState({ articleId: response.data.id });
     }
 
