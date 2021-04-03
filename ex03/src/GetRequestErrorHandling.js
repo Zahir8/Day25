@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class GetRequestErrorHandling extends Component {
+class GetRequestErrorHandling extends React.Component {
 
     constructor(props) {
         super(props);
@@ -8,18 +9,11 @@ class GetRequestErrorHandling extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.npms.io/v2/search?q=react')
-            .then(async response => {
-                const data = await response.json();
-                if (!response.ok) {
-                    const error = (data && data.message) || response.statusText;
-                    return Promise.reject(error);
-                }
-                this.setState({ totalReactPackages: data.total })
-            })
+        axios.get('https://api.npms.io/v2/invalid-url')
+            .then( (response) => this.setState({ totalReactPackages: response.data.total }))
             .catch(error => {
-                this.setState({ errorMessage: error.toString() });
-                console.error("There was an error!", error)
+                this.setState({ errorMessage: error.message });
+                console.error("There was an error!", error);
             });
     }
 
