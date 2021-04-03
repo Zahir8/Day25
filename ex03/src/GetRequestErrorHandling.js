@@ -11,7 +11,7 @@ class GetRequestErrorHandling extends React.Component {
     componentDidMount() {
         axios.get('https://api.npms.io/v2/invalid-url')
             .then( (response) => this.setState({ totalReactPackages: response.data.total }))
-            .catch(error => {
+            .catch((error) => {
                 this.setState({ errorMessage: error.message });
                 console.error("There was an error!", error);
             });
