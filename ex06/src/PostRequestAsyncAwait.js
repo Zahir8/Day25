@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class PostRequestAsyncAwait extends Component {
+class PostRequestAsyncAwait extends React.Component {
 
     constructor(props) {
         super(props);
@@ -8,15 +9,10 @@ class PostRequestAsyncAwait extends Component {
     }
 
     async componentDidMount() {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React POST Request Example' })
-        };
+        const article = { title: "React POST Request Example" };
 
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', requestOptions);
-        const data = await response.json();
-        this.setState({ articleId: data.id });
+        const response = axios.post('https://reqres.in/api/articles', article)
+        this.setState({ articleId: response.data.id });
     }
 
     render() {
