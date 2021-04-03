@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class DeleteRequest extends Component {
+class DeleteRequest extends React.Component {
 
     constructor(props) {
         super(props);
@@ -9,7 +10,7 @@ class DeleteRequest extends Component {
 
     componentDidMount() {
 
-        fetch('https://jsonplaceholder.typicode.com/posts/1', {method: 'DELETE'})
+        axios.delete('https://jsonplaceholder.typicode.com/posts/1')
         .then(() => this.setState({ status: 'Delete successful' }));
     }
 
