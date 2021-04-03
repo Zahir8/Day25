@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class GetRequestSetHeaders extends Component {
+class GetRequestSetHeaders extends React.Component {
     
     constructor(props) {
         super(props);
@@ -9,9 +10,8 @@ class GetRequestSetHeaders extends Component {
 
     componentDidMount() {
         const headers = {"Content-Type": "application/json"}
-        fetch('https://api.npms.io/v2/search?q=react', { headers })
-            .then(response => response.json())
-            .then(data => this.setState({ totalReactPackages: data.total }));
+        axios.get('https://api.npms.io/v2/search?q=react', { headers })
+            .then(response => this.setState({ totalReactPackages: response.data.total }));
     }
 
     render() {
