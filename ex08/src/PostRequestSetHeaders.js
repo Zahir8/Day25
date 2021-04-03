@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class PostRequestSetHeaders extends Component {
+class PostRequestSetHeaders extends React.Component {
 
     constructor(props) {
         super(props);
@@ -8,19 +9,15 @@ class PostRequestSetHeaders extends Component {
     }
 
     componentDidMount() {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer my-token',
-                'My-Custom-Header': 'foobar'    
-            },
-            body: JSON.stringify({ title: 'React POST Request Example' })
+        const article = { title: "React POST Request Example" };
+        const headers = { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer my-token',
+            'My-Custom-Header': 'foobar'
         };
 
-        fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-        .then(response => response.json())
-        .then(data => this.setState({ articleId: data.id }));
+        axios.post('https://reqres.in/articles', article, { headers })
+        .then(response => this.setState({ articleId: response.data.id }));
     }
 
     render() {
