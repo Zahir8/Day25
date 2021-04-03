@@ -11,7 +11,7 @@ class PostRequest extends React.Component {
     componentDidMount() {
         const article = { title: "React POST Request Example" };
 
-        axios.post('https://reqres..in/api/articles', article)
+        axios.post('https://reqres.in/api/articles', article)
             .then(response => this.setState({ articleId: response.data.id }));
     }
 
