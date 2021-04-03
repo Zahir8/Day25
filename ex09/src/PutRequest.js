@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class PutRequest extends Component {
+class PutRequest extends React.Component {
 
     constructor(props) {
         super(props);
@@ -8,14 +9,8 @@ class PutRequest extends Component {
     }
 
     componentDidMount() {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React PUT Request Example' })
-        };
-
-        fetch('https://jsonplaceholder.typicode.com/posts/1', requestOptions)
-        .then(response => response.json())
+        axios.get('https://jsonplaceholder.typicode.com/posts/1', { title: "React PUT Example" })
+        .then(response => response.data)
         .then(data => this.setState({ postId: data.id }));
     }
 
